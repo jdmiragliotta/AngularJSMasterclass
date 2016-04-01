@@ -1,8 +1,1 @@
-﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Element Directives</title>  <script src="angular.js"></script>  <script>      
-        (function () {
-              var name = "myApp",requires = [],myApp = null;
-              myApp = angular.module(name, requires);
-              myApp.controller("AppCtrl", function ($scope) {
-                  
-              });
-        }());	  </script></head><body ng-controller="AppCtrl">	    </body></html>
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Element Directives</title>  <script src="angular.js"></script>  <script>              (function () {              var name = "myApp",requires = [],myApp = null;              myApp = angular.module(name, requires);              myApp.controller("AppCtrl", function ($scope, $timeout) {                  $scope.checkMe = true;                  $scope.url = "";                  $scope.imgSrc = "angular.jpeg";                  $timeout(function(){                    $scope.url = "http://google.com";                  }, 3000);              });        }());	  </script></head><body ng-controller="AppCtrl">  <input type="checkbox" ng-checked="checkMe">Check Me!  <button ng-disabled="{{checkMe}}">Click Me!</button><br>  <input type="text" value="Some Text" ng-readonly="{{checkMe}}"><br>  <a ng-href="{{url}}">Go to Google</a>  <img ng-src="{{imgSrc}}"></body></html>
