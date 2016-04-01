@@ -1,23 +1,1 @@
-﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Controllers</title>  <script src="angular.js"></script>  <script>      
-        (function () {
-              var name = "myApp",				  requires = [],				  myApp = null;				  
-              myApp = angular.module(name, requires);			  
-              myApp.controller("AppCtrl", function ($scope) {
-                  $scope.products = [{name:"Computer",price:350},{name:"Watch",price:50},{name:"Mobile",price:10},					{name:"Music System",price:80},{name:"Clothes",price:40}];
-              });
-        }());	  </script></head><body ng-controller="AppCtrl">    <table>		<h1>Products</h1>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Product Name</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="product in products">
-                <td>{{$index+1}}</td>
-                <td>{{product.name}}</td>
-                <td>{{product.price | currency}}</td>				<td><button>Add to Cart</button></td>
-            </tr>
-        </tbody>
-    </table>	<div>		<h1>Cart</h1>		Products will be added here	</div></body></html>
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Controllers</title>  <script src="angular.js"></script>  <script>              (function () {              var name = "myApp",				  requires = [],				  myApp = null;              myApp = angular.module(name, requires);              myApp.controller("AppCtrl", function ($scope) {                  $scope.title="Product Manager";              });              myApp.controller("ProductCtrl", function ($scope) {                 $scope.products = [                    {name:"Computer",price:350},                    {name:"Watch",price:50},                    {name:"Mobile",price:10},                    {name:"Music System",price:80},                    {name:"Clothes",price:40}                  ];              });              myApp.controller("CartCtrl", function ($scope) {                $scope.addToCart = function(){                                  }              });        }());	  </script></head><body ng-controller="AppCtrl">    <table ng-controller="ProductCtrl">		<h1>Products</h1>        <thead>            <tr>                <th>#</th>                <th>Product Name</th>                <th>Price</th>            </tr>        </thead>        <tbody>            <tr ng-repeat="product in products">                <td>{{$index+1}}</td>                <td>{{product.name}}</td>                <td>{{product.price | currency}}</td>				<td><button>Add to Cart</button></td>            </tr>        </tbody>    </table>	<div ng-controller='CartCtrl'>		<h1>Cart</h1>		Products will be added here	</div></body></html>
