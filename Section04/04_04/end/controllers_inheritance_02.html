@@ -1,0 +1,8 @@
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Controllers</title>  <script src="angular.js"></script>  <script>      
+        (function () {
+              var name = "myApp",				  requires = [],				  myApp = null;				  
+              myApp = angular.module(name, requires);			  
+              myApp.controller("ParentCtrl", function ($scope) {
+                  $scope.vm = {					name: "John"				  }
+              });			  			  myApp.controller("ChildCtrl", function($scope) {					$scope.vm = {										}			  });			  
+        }());	  </script></head><body>	<h1>Understanding Controller Inheritance</h1>    <div ng-controller="ParentCtrl">		<label>[Parent Controller] - vm.name:</label>		<input ng-model="vm.name" />		<div ng-controller="ChildCtrl">			<label>[Child Controller] - vm.name:</label>			<input ng-model="vm.name" />						<ul>				<li>child controller name: {{vm.name}}</li>				<li>parent controller name: {{$parent.vm.name}}</li>			</ul>		</div>	</div></body></html>

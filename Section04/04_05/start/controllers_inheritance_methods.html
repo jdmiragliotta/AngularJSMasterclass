@@ -1,0 +1,8 @@
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Controllers</title>  <script src="angular.js"></script>  <script>      
+        (function () {
+              var name = "myApp",				  requires = [],				  myApp = null;				  
+              myApp = angular.module(name, requires);			  
+              myApp.controller("ArrayCtrl", function ($scope) {
+                  $scope.myArray = ["John", "Andrew"];				  				  $scope.add = function(name) {					$scope.myArray.push(name);				  }
+              });			  			  myApp.controller("CollectionCtrl", function($scope) {								  });			  
+        }());	  </script></head><body>	<h1>Understanding Controller Inheritance - Methods</h1>    <div ng-controller="ArrayCtrl">		<label>My Array:</label>		<span>{{myArray}}</span> <br/><br/>				<label>[Parent Controller]:</label>		<input ng-model="parentName" />		<button ng-click="add(parentName)">Add New Item</button>				<div ng-controller="CollectionCtrl">			<label>[Child Controller]:</label>			<input ng-model="childName" />			<input type="number" ng-model="index" />			<button ng-click="add(childName)">Add New Item At</button>		</div>	</div></body></html>
