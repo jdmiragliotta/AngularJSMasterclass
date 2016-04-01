@@ -1,11 +1,32 @@
-﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Element Directives</title>  <script src="angular.js"></script>  <script>      
+﻿<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>Element Directives</title>
+  <script src="angular.js"></script>
+  <script>      
         (function () {
               var name = "myApp",requires = [],myApp = null;
               myApp = angular.module(name, requires);
               myApp.controller("AppCtrl", function ($scope) {
-                  $scope.contacts = [{ firstname: "John", lastname: "Smith", favourite: true },{ firstname: "Jimmy", lastname: "Jacob", favourite: false },{ firstname: "Charles", lastname: "Bailey", favourite: false },{ firstname: "Jacob", lastname: "Bateman", favourite: true },{ firstname: "Andrew", lastname: "Baxter", favourite: false }];
+                    $scope.contacts = [
+                    { firstname: "John", lastname: "Smith", favourite: true },
+                    { firstname: "Jimmy", lastname: "Jacob", favourite: false },
+                    { firstname: "Charles", lastname: "Bailey", favourite: false },
+                    { firstname: "Jacob", lastname: "Bateman", favourite: true },
+                    { firstname: "Andrew", lastname: "Baxter", favourite: false }
+                  ];
+                  $scope.toggleNewContact =false;
+                  $scope.showNewContactForm = function(){
+                    $scope.toggleNewContact = true;
+                  }
               });
-        }());	  </script></head><body ng-controller="AppCtrl">	    <table>
+        }());
+	
+  </script>
+</head>
+<body ng-controller="AppCtrl">	
+    <table>
         <thead>
             <tr>
                 <th>#</th>
@@ -15,11 +36,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="contact in contacts">
+            <tr ng-repeat="contact in contacts" ng-if="contact.favourite">
                 <td>{{$index+1}}</td>
                 <td>{{contact.firstname}}</td>
                 <td>{{contact.lastname}}</td>
                 <td>{{contact.favourite}}</td>
             </tr>
         </tbody>
-    </table>	<br />	<button>Add New Contact</button>		<form>		First Name: <input type="text"  /> <br />		Last Name: <input type="text"  /> <br />		Favourite: <input type="checkbox" /> <br />		<button>Submit</button>		<button>Cancel</button>	</form></body></html>
+    </table>
+	<br />
+	<button ng-click="showNewContactForm()">Add New Contact</button>
+	
+	<form ng-show="toggleNewContact">
+		First Name: <input type="text"  /> <br />
+		Last Name: <input type="text"  /> <br />
+		Favourite: <input type="checkbox" /> <br />
+		<button>Submit</button>
+		<button ng-click="toggleNewContact = false">Cancel</button>
+	</form>
+</body>
+</html>
