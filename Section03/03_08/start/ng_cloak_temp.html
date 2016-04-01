@@ -1,0 +1,11 @@
+﻿<!doctype html><html lang="en"><head>  <meta charset="utf-8">  <title>Template Directives</title>  <script src="angular.js"></script>  <script>  </script></head><body ng-controller="AppCtrl">    <div ng-repeat="channel in ['None', 'StarTV', 'StarWorld']">        <input type="radio" name="leisure"                value="{{channel}}"  />            {{channel}}		<input type="radio" name="leisure"                value="{{channel}}"  />            {{channel}}		<input type="radio" name="leisure"                value="{{channel}}"  />            {{channel}}			     </div>    <div ng-switch="data.whichChannel">
+        <div ng-switch-when="StarTV">
+            You are watching Star TV
+        </div>
+        <div ng-switch-when="StarWorld">
+            You are watching Star World
+        </div>
+        <div ng-switch-default>
+            You are watching nothing
+        </div>
+    </div></body></html>
