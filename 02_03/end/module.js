@@ -1,0 +1,1 @@
+(function() {		var balance = 0;		var deposit = function(money) {		balance += money;		console.log(balance);		sendMsg();	}		var withdraw = function(money) {		balance -= money;		console.log(balance);		sendMsg();	}		var sendMsg = function() {		console.log("sending message");	}	deposit(500);	withdraw(100);	console.log(balance);}());

@@ -1,0 +1,1 @@
+var com = {};com.mydomain = {};com.mydomain.AProgram = {};com.mydomain.AProgram.empName = "Sandy";
