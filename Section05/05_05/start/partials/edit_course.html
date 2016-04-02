@@ -14,7 +14,7 @@
 		<input type="number" ng-model="courseToEdit.timeline" /> </br>
 		<label>Price:</label>
 		<input type="number" ng-model="courseToEdit.price" /> </br>
-		<button>Update</button>
+		<button ng-click='updateCourse(courseToEdit)'>Update</button>
 		<button ng-click="toggleEditCourse(false)">Cancel</button>
 	</form>
 </div>

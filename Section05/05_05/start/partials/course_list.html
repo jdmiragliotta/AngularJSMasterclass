@@ -18,8 +18,8 @@
 				<td>{{course.category}}</td>
 				<td>{{course.timeline}}</td>
 				<td>{{course.price | currency}}</td>
-				<td><button>Edit</button></td>
-				<td><button>Delete</button></td>
+				<td><button ng-click="editCourse(course)">Edit</button></td>
+				<td><button ng-click="deleteCourse(course)">Delete</button></td>
 			</tr>
 		</tbody>
 	</table>
