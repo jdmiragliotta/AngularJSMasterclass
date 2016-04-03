@@ -1,7 +1,1 @@
-﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Custom Filter</title>  <script src="angular.js"></script>  <script>      	(function () {
-          var name = "myApp",requires = [],myApp = null;
-          myApp = angular.module(name, requires);
-          myApp.controller("AppCtrl", function ($scope) {
-            			
-          });
-    }());  </script></head><body ng-controller="AppCtrl">    <textarea ng-model="summary"></textarea>	<p>Output: {{summary}}</p></body></html>
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Custom Filter</title>  <script src="angular.js"></script>  <script>	(function () {          var name = "myApp",requires = [],myApp = null;          myApp = angular.module(name, requires);          myApp.controller("AppCtrl", function ($scope) {          });          myApp.filter("removelinks", function() {            return function(str) {              var pattern = /<a\b[^>]*>(.*?)<\/a>/;              if (str != undefined) {                return str.replace(pattern, "");              }            }            });    }());  </script></head><body ng-controller="AppCtrl">    <textarea ng-model="summary"></textarea>	<p>Output: {{summary | removelinks}}</p></body></html>
