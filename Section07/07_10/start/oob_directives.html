@@ -1,4 +1,10 @@
-﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Custom Directives</title>  <script src="angular.js"></script>  <script>      (function () {
+﻿<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>Custom Directives</title>
+  <script src="angular.js"></script>
+  <script>      (function () {
           var name = "myApp",requires = [],myApp = null;
           myApp = angular.module(name, requires);
           myApp.controller("AppCtrl", function ($scope) {
@@ -13,6 +19,10 @@
                   designation: "Tester",
                   followers: ["John", "Julie"]
               }
+
+              $scope.sendNominations = function(name, reason){
+                console.log(name + "has nominated this employee as a " + reason);
+              }
           });
           myApp.directive("employeeCard", function () {
               return {
@@ -21,14 +31,26 @@
                   replace: true,
                   scope: {
                       employee: "=employeeInfo",
-                      message: "@"
+                      message: "@",
+                      sendNominations: "&"
                   },
                   controller: function ($scope) {
                       $scope.title = "Employee Card";
                       $scope.follow = function (name) {
                           $scope.employee.followers.push(name);
                       }
+                      $scope.nominate = function(name){
+                        $scope.sendNominations({'name':name, 'reason': 'great team player'});
+                      }
                   }
               }
           });
-      }());	  </script></head><body ng-controller="AppCtrl">    <employee-card employee-info="employee" message="Employee of the year - 2015"></employee-card>    <employee-card employee-info="employee1"></employee-card></body></html>
+      }());
+
+  </script>
+</head>
+<body ng-controller="AppCtrl">
+    <employee-card employee-info="employee" message="Employee of the year - 2015" send-nominations="sendNominations(name,reason)"></employee-card>
+    <employee-card employee-info="employee1"></employee-card>
+</body>
+</html>
