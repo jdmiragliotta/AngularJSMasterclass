@@ -1,8 +1,1 @@
-﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Compiler</title>  <script src="angular.js"></script>  <script>      
-        (function () {
-            var name = "myApp", requires = [], myApp = null;
-            myApp = angular.module(name, requires);
-            myApp.controller("AppCtrl", function ($scope) {
-                $scope.name = "John";				$scope.likes = ["Movies", "Music", "AngularJS"];
-            });						myApp.directive("compiler", function($compile) {				return function(scope, element, attrs) {					scope.$watch("ngExp", function(newVal) {						if (newVal != undefined) {													}					});				}			});
-        } ());	  </script></head><body ng-controller="AppCtrl">    	<p>Give me some Angular specific text:</p>	<textarea ng-model="ngExp"></textarea>		<p compiler></p>	</body></html>
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Compiler</title>  <script src="angular.js"></script>  <script>        (function () {            var name = "myApp", requires = [], myApp = null;            myApp = angular.module(name, requires);            myApp.controller("AppCtrl", function ($scope) {                $scope.name = "John";				$scope.likes = ["Movies", "Music", "AngularJS"];            });			myApp.directive("compiler", function($compile) {        return function(scope, element, attrs) {          scope.$watch("ngExp", function(newVal) {            if (newVal != undefined) {              var elemToCompile = angular.element(newVal);              var compileFn = $compile(elemToCompile);              compileFn(scope);              element.append(elemToCompile);            }          });        }      });        } ());  </script></head><body ng-controller="AppCtrl">	<p>Give me some Angular specific text:</p>	<textarea ng-model="ngExp"></textarea>	<p compiler></p></body></html>
