@@ -1,0 +1,47 @@
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Custom Directives</title>  <script src="angular.js"></script>  <script>      
+        (function () {
+            var name = "myApp", requires = [], myApp = null;
+            myApp = angular.module(name, requires);
+            myApp.controller("AppCtrl", function ($scope) {
+                $scope.employee = {
+                    name: "John Smith",
+                    designation: "Web Developer",
+                    followers: ["Andrew", "Jimmy", "Julie"]
+                }
+
+                $scope.employee1 = {
+                    name: "Andrew Parker",
+                    designation: "Tester",
+                    followers: ["John", "Julie"]
+                }
+
+                $scope.sendNominations = function (name, reason) {
+                    console.log(name + " nominated an employee as " + reason);
+                }
+            });
+            myApp.directive("employeeCard", function () {
+                return {
+                    templateUrl: "employee_info.html",
+                    restrict: "AEC",
+                    replace: true,
+                    scope: {
+                        employee: "=employeeInfo",
+                        message: "@",
+                        sendNominations: "&"
+                    },
+                    controller: function ($scope) {
+                        $scope.title = "Employee Card";
+
+                        $scope.follow = function (name) {
+                            $scope.employee.followers.push(name);
+                        }
+
+                        $scope.nominate = function (name, reason) {
+                            $scope.sendNominations({ 'name': name, 'reason': 'great team player' });
+
+                            $scope.$emit("nominate", { 'name': name, 'reason': 'great team player' });
+                        }
+                    }
+                }
+            });
+        } ());	  </script></head><body ng-controller="AppCtrl">    <employee-card employee-info="employee" message="Employee of the year - 2015"        send-nominations="sendNominations(name, reason)">    </employee-card></body></html>

@@ -1,0 +1,34 @@
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Custom Directives</title>  <script src="angular.js"></script>  <script>      (function () {
+          var name = "myApp",requires = [],myApp = null;
+          myApp = angular.module(name, requires);
+          myApp.controller("AppCtrl", function ($scope) {
+              $scope.employee = {
+                  name: "John Smith",
+                  designation: "Web Developer",
+                  followers: ["Andrew","Jimmy","Julie"]
+              }
+
+              $scope.employee1 = {
+                  name: "Andrew Parker",
+                  designation: "Tester",
+                  followers: ["John", "Julie"]
+              }
+          });
+          myApp.directive("employeeCard", function () {
+              return {
+                  templateUrl: "employee_info.html",
+                  restrict: "AEC",
+                  replace: true,
+                  scope: {
+                      employee: "=employeeInfo",
+                      message: "@"
+                  },
+                  controller: function ($scope) {
+                      $scope.title = "Employee Card";
+                      $scope.follow = function (name) {
+                          $scope.employee.followers.push(name);
+                      }
+                  }
+              }
+          });
+      }());	  </script></head><body ng-controller="AppCtrl">    <employee-card employee-info="employee" message="Employee of the year - 2015"></employee-card>    <employee-card employee-info="employee1"></employee-card></body></html>

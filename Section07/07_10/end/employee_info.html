@@ -1,0 +1,1 @@
+<div>	<strong>{{employee.name}}</strong> - {{employee.designation}} 	<br/><br/> 	<div ng-show='!!employee.followers'>		Followers: 		<ul>			<li ng-repeat='name in employee.followers'>{{name}}</li>		</ul>	</div>    <p>{{message}}</p>	<button ng-click="follow('Sandip')">Follow</button>    <button ng-click="nominate('Sandip')">Nominate</button></div>
