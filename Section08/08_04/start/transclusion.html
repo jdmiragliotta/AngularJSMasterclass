@@ -1,8 +1,1 @@
-﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Transclusion</title>  <script src="angular.js"></script>  <script>      
-        (function () {
-            var name = "myApp", requires = [], myApp = null;
-            myApp = angular.module(name, requires);
-            myApp.controller("AppCtrl", function ($scope) {
-                $scope.employee = {					name: "John Smith",					info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."				}
-            });						myApp.directive("panel", function() {				return {					template: "<div>{{title}}</div>",					scope: {						title: "="					},					replace: true				}			});
-        } ());	  </script></head><body ng-controller="AppCtrl">    	<div panel title="employee.name"><p>{{employee.info}}</p></div>	</body></html>
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Transclusion</title>  <script src="angular.js"></script>  <script>        (function () {            var name = "myApp", requires = [], myApp = null;            myApp = angular.module(name, requires);            myApp.controller("AppCtrl", function ($scope) {                $scope.employee = {					name: "John Smith",					info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."				}            });			myApp.directive("panel", function() {				return {					template: "<div>{{title}}<div ng-transclude></div></div>",					scope: {						title: "="					},					replace: true,          transclude: true				}			});        } ());  </script></head><body ng-controller="AppCtrl">	<div panel title="employee.name"><p>{{employee.info}}</p></div></body></html>
