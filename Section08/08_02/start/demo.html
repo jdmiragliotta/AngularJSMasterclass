@@ -1,0 +1,8 @@
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Bootstrap</title>  <script src="angular.js"></script>  <script>      
+        (function () {
+            var name = "myApp", requires = [], myApp = null;
+            myApp = angular.module(name, requires);
+            myApp.controller("AppCtrl", function ($scope) {
+                $scope.name = "John";				$scope.likes = ["Movies", "Music", "AngularJS"];
+            });
+        } ());	  </script></head><body ng-controller="AppCtrl">			<span>{{name}} [{{'the scholar' | uppercase}}]</span> likes:	<p ng-repeat="like in likes">{{like}}</p>		</body></html>

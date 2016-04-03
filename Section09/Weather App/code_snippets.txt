@@ -1,0 +1,27 @@
+<tr>
+	<td>23 Mar <img src="/img/w/10d.png"></td>
+	<td>
+		<span class="label label-warning">9.7°C </span>&nbsp;
+		<span class="label label-default">5.5°C </span> &nbsp;&nbsp;
+		<i>light rain</i> 
+		<p> 4.47m/s <br>
+		clouds: 32%, 1021.95 hpa</p>
+	</td>
+</tr>
+
+<tr>
+	<td>
+		<img src="http://openweathermap.org/img/w/03d.png">
+	</td>
+	<td>
+		<b><a href="/city/2643734">Londonderry County Borough, GB</a></b> 
+		<img src="http://openweathermap.org/images/flags/gb.png">  
+		<b><i>scattered clouds</i> </b>
+		<p>  <span class="badge badge-info">7.4°С </span> temperature from 7.4 to 7.4°С, wind 8.36m/s. clouds 32%, 1014.9 hpa</p>
+		<p>Geo coords  
+			<a href="/Maps?zoom=12&amp;lat=54.997211&amp;lon=-7.30917&amp;layers=B0FTTFF">[ -7.30917, 54.997211 ]</a>
+		</p>
+	</td>
+</tr>
+
+http://api.openweathermap.org/data/2.5/find?callback=jQuery19101596679303329438_1427179600104&q=london&type=like&sort=population&cnt=30&_=1427179600106

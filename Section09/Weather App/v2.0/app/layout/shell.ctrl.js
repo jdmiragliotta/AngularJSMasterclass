@@ -1,0 +1,1 @@
+(function() {	angular.module("app.shell")		.controller("Shell", function($scope, weatherSvc) {			$scope.getWeatherImgUrl = weatherSvc.getWeatherImgUrl;			$scope.getCountryFlagImgUrl = weatherSvc.getCountryFlagImgUrl;			$scope.getTempInDegree = weatherSvc.getTempInDegree;			$scope.getTime = weatherSvc.getTime;		});}());

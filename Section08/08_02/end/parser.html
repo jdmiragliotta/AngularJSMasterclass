@@ -1,0 +1,8 @@
+﻿<!doctype html><html lang="en" ng-app="myApp"><head>  <meta charset="utf-8">  <title>Parser</title>  <script src="angular.js"></script>  <script>      
+        (function () {
+            var name = "myApp", requires = [], myApp = null;
+            myApp = angular.module(name, requires);
+            myApp.controller("AppCtrl", function ($scope) {
+                $scope.name = "John";				$scope.likes = ["Movies", "Music", "AngularJS"];
+            });						myApp.directive("parser", function($parse) {				return function(scope, element, attrs) {					scope.$watch("ngExp", function(newVal) {						var parseFn = $parse(newVal);						var output = parseFn(scope);												if (output != undefined) {							element.html("Output:" + output);						} else {							element.html("Output:" + " Invalid Input!");						}					});				}			});
+        } ());	  </script></head><body ng-controller="AppCtrl">    	<p>Give me some Angular specific text:</p>	<textarea ng-model="ngExp"></textarea>		<p parser></p>	</body></html>
