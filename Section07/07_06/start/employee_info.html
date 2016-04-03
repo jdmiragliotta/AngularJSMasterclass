@@ -1,1 +1,1 @@
-<div>	<strong>{{employee.name}}</strong> - {{employee.designation}} 	<br/><br/> 	<div ng-show='!!employee.followers'>		Followers: 		<ul>			<li ng-repeat='name in employee.followers'>{{name}}</li>		</ul>	</div></div>
+<div>	<strong>{{employee.name}}</strong> - {{employee.designation}}	<br/><br/>	<div ng-show='!!employee.followers'>		Followers:		<ul>			<li ng-repeat='name in employee.followers'>{{name}}</li>		</ul>    <button ng-click="follow('Jeremy')">Follow</button>	</div></div>
